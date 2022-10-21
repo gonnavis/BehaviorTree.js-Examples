@@ -1,4 +1,4 @@
-import { BehaviorTree, Sequence, Task, SUCCESS, FAILURE } from 'behaviortree'
+import { BehaviorTree, Sequence, Task, SUCCESS, FAILURE, RUNNING } from 'behaviortree'
 
 BehaviorTree.register('bark', new Task({
   run: function (dog) {
@@ -7,13 +7,20 @@ BehaviorTree.register('bark', new Task({
   }
 }))
 
+let testCount = 0;
+let testCount2 = 0;
 const tree = new Sequence({
   nodes: [
     'bark',
     new Task({
       run: function (dog) {
         dog.randomlyWalk()
-        return SUCCESS
+        testCount++;
+        if (testCount <= 3) {
+          return RUNNING
+        } else {
+          return SUCCESS
+        }
       }
     }),
     'bark',
@@ -22,7 +29,12 @@ const tree = new Sequence({
         if (dog.standBesideATree()) {
           dog.liftALeg()
           dog.pee()
-          return SUCCESS
+          testCount2++;
+          if (testCount2 <= 3) {
+            return RUNNING
+          } else {
+            return SUCCESS
+          }
         } else {
           return FAILURE
         }
@@ -74,7 +86,7 @@ function step() {
   bTree.step()
   console.log('-----------------------------')
   count++;
-  if (count < 3) setTimeout(step, 1000);
+  if (count < 10) setTimeout(step, 1000);
 }
 step();
 
