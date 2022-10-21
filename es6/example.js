@@ -2,10 +2,10 @@ import { BehaviorTree, Sequence, Task, SUCCESS, FAILURE, RUNNING } from 'behavio
 
 BehaviorTree.register('bark', new Task({
   start: function (dog) {
-    console.log('!!! 000 start')
+    console.log('*** 000 start')
   },
   end: function (dog) {
-    console.log('!!! 000 end')
+    console.log('*** 000 end')
   },
   run: function (dog) {
     dog.bark()
@@ -21,10 +21,10 @@ const tree = new Sequence({
     'bark',
     new Task({
       start: function (dog) {
-        console.log('!!! 111 start')
+        console.log('*** 111 start')
       },
       end: function (dog) {
-        console.log('!!! 111 end')
+        console.log('*** 111 end')
       },
       run: function (dog) {
         dog.randomlyWalk()
@@ -41,10 +41,10 @@ const tree = new Sequence({
     // 'bark',
     new Task({
       start: function (dog) {
-        console.log('!!! 222 start')
+        console.log('*** 222 start')
       },
       end: function (dog) {
-        console.log('!!! 222 end')
+        console.log('*** 222 end')
       },
       run: function (dog) {
         // if (dog.standBesideATree()) {
