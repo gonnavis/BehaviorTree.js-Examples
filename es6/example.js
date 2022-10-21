@@ -60,7 +60,25 @@ const bTree = new BehaviorTree({
   blackboard: dog
 })
 
+// ---
+
 // The "game" loop:
-setInterval(function () {
+
+// setInterval(function () {
+//   bTree.step()
+//   console.log('-----------------------------')
+// }, 1000)
+
+let count = 0;
+function step() {
   bTree.step()
-}, 1000 / 60)
+  console.log('-----------------------------')
+  count++;
+  if (count < 3) setTimeout(step, 1000);
+}
+step();
+
+// for (let i = 0; i < 3; i++) {
+//   bTree.step()
+//   console.log('-----------------------------')
+// }
