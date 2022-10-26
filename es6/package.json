@@ -10,7 +10,7 @@
   "author": "Calamari <g.tavonius@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "behaviortree": ">=2.0.2"
+    "behaviortree": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
