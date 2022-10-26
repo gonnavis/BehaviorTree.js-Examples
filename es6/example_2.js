@@ -4,7 +4,7 @@ let count = 0;
 const blackboard = {};
 
 BehaviorTree.register('000', new Task({
-  run: function (dog) {
+  run: function (blackboard) {
     console.log('000')
     if (count <= 3) {
       return FAILURE
@@ -14,7 +14,7 @@ BehaviorTree.register('000', new Task({
   }
 }))
 BehaviorTree.register('111', new Task({
-  run: function (dog) {
+  run: function (blackboard) {
     console.log('111')
     return RUNNING
   }
