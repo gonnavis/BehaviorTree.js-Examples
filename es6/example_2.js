@@ -6,7 +6,7 @@ const blackboard = {};
 BehaviorTree.register('000', new Task({
   run: function (blackboard) {
     console.log('000')
-    if (count <= 3) {
+    if (count < 3) {
       return FAILURE
     } else {
       return SUCCESS
